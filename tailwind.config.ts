@@ -1,20 +1,42 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+    },
+    container: {
+      padding: {
+        DEFAULT: "25px",
+      },
+    },
+
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        bgcol: "#F3F3F3",
+        black: "#000000",
+        lightgray: "#444444",
+      },
+      fontFamily: {
+        neue: ["Neue Haas Grotesk Display Pro", "sans-serif"],
+      },
+      fontWeight: {
+        xxthin: "15",
+        xthin: "25",
+        light: "45",
+        roman: "55",
+        medium: "65",
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
