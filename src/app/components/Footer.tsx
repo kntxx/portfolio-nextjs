@@ -22,7 +22,7 @@ const Footer = () => {
               <span className="text-[23px] mx-1">
                 <TbBrandNextjs />
               </span>
-              - CopyRight &#169; 2023
+              - CopyRight &#169; 2024
             </p>
           </motion.div>
           <motion.div
