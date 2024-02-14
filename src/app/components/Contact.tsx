@@ -5,6 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { fadeIn } from "./variants";
+import { enqueueSnackbar } from "notistack";
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
   const [showMessage, setShowMessage] = useState(false);
@@ -33,6 +34,7 @@ const Contact = () => {
         .then(
           (result) => {
             console.log(result.text);
+            enqueueSnackbar("Email sent successfully!", { variant: "success" });
             setShowMessage(true);
           },
           (error) => {
@@ -73,34 +75,24 @@ const Contact = () => {
             className=" shadow-xl rounded-2xl flex flex-col  gap-y-6 pb-24 p-6 items-start  md:w-[400px] lg:w-[500px] border h-[400px] text-left"
           >
             <form ref={form} onSubmit={sendEmail} className="">
-              <CSSTransition
-                in={showMessage}
-                timeout={300}
-                classNames="fade"
-                unmountOnExit
-              >
-                <div className="bg-gray-100 border border-gray-300  rounded-md px-4 py-2 text-center font-neue text-[17px] font-bold text-lightgray">
-                  I have received your message. Thank you!
-                </div>
-              </CSSTransition>
               <input
                 type="text"
                 placeholder="Your Name"
                 name="to_name"
                 required
-                className="bg-transparent font-neue font-thin border-b border-black max-w-[300px] py-3 outline-none w-full placeholder:text-lightgray transition-all"
+                className="bg-transparent font-neue font-normal border-b  border-black max-w-[300px] py-3 outline-none w-full placeholder:text-lightgray transition-all"
               />
               <input
                 type="email"
                 name="from_name"
                 placeholder="Your Email"
                 required
-                className="bg-transparent font-neue font-thin border-b border-black max-w-[300px] py-3 outline-none w-full placeholder:text-lightgray  transition-all"
+                className="bg-transparent font-neue font-normal border-b border-black max-w-[300px] py-3 outline-none w-full placeholder:text-lightgray  transition-all"
               />
               <textarea
                 name="message"
                 required
-                className="bg-transparent font-neue font-thin resize-none mb-12 border-b border-black py-12 outline-none w-full placeholder:text-lightgray  transition-all"
+                className="bg-transparent font-neue font-normal resize-none mb-12 border-b border-black py-12 outline-none w-full placeholder:text-lightgray  transition-all"
                 placeholder="Message"
               ></textarea>
               <button
